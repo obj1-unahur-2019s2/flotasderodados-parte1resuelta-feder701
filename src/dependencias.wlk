@@ -1,7 +1,10 @@
 class Dependencia {
 	var flota = []	
 	var property cantidadDeEmpleados
+	var pedidos =[]
 	
+	
+	method agregarPedido(ped){pedidos.add(ped)}
 	method agregarAFlota(vehiculo) { flota.add(vehiculo) }
 	method quitarDeFlota(vehiculo) { flota.remove(vehiculo) }
 	
@@ -45,4 +48,18 @@ class Dependencia {
 	method esGrande() {
 		return cantidadDeEmpleados >= 40 and flota.size() >= 5
 	}
+	
+	method pedidosMalos(){
+		pedidos.filter({pedido => not flota.any({auto => pedido.loPuedeHacer(auto)})})
+	}
+	
+	method esColorImposible(){
+		return pedidos.all({pedido => })
+	}
+	
+	method relajarPedidos(){
+		pedidos.forEach({pedido => pedido.relajar()})
+	}
+	
+	
 }
